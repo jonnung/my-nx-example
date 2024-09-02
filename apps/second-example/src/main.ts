@@ -11,12 +11,13 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const unusedVariable = 5;
 
   const config = new DocumentBuilder()
-    .setTitle('My NX Example')
-    .setDescription('My First NX x NestJS API')
+    .setTitle('My NX Example2')
+    .setDescription('My Second NX x NestJS API')
     .setVersion('1.0')
-    .addTag('firstApp')
+    .addTag('secondApp')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
@@ -24,9 +25,11 @@ async function bootstrap() {
 
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT || 3002;
   await app.listen(port);
-  Logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+  Logger.log(
+    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+  );
 }
 
 bootstrap();

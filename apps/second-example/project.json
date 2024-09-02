@@ -1,0 +1,26 @@
+{
+  "name": "second-example",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/second-example/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "second-example:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "second-example:build:development"
+        },
+        "production": {
+          "buildTarget": "second-example:build:production"
+        }
+      }
+    }
+  }
+}
